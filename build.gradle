@@ -1,0 +1,47 @@
+
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+group = 'com.tutor.assessment'
+version = '1.0.0-SNAPSHOT'
+
+
+sourceCompatibility = 11
+
+
+dependencies {
+
+    // lombok definitions
+    compileOnly group: 'org.projectlombok', name: 'lombok'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok'
+
+    //swagger definition
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //testing essentials
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter'
+    testImplementation group: 'org.assertj', name: 'assertj-core'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
